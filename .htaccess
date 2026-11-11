@@ -1,0 +1,12 @@
+# Dipakai HANYA jika seluruh folder proyek di-upload ke public_html
+# (hosting yang document root-nya tidak bisa diarahkan ke folder public).
+# Semua permintaan diteruskan ke folder public/, sehingga file seperti
+# .env, config/, dan vendor/ tidak bisa dibuka dari browser.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
