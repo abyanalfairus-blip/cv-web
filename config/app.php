@@ -99,6 +99,12 @@ return [
 
     'key' => env('APP_KEY'),
 
+    /*
+    | Kode rahasia halaman /setup/{token} (setup database tanpa Terminal).
+    | Kosongkan / hapus dari .env setelah setup selesai.
+    */
+    'setup_token' => env('SETUP_TOKEN', ''),
+
     'previous_keys' => [
         ...array_filter(
             explode(',', (string) env('APP_PREVIOUS_KEYS', ''))

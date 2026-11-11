@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\CvController;
 use App\Http\Controllers\CvPdfController;
+use App\Http\Controllers\SetupController;
 use Illuminate\Support\Facades\Route;
 
 /* ===================== HALAMAN PUBLIK ===================== */
@@ -12,6 +13,9 @@ Route::get('/', CvController::class)->name('cv');
 
 // Unduh CV versi PDF (format formal)
 Route::get('/cv/download', CvPdfController::class)->name('cv.download');
+
+// Setup database sekali pakai untuk hosting tanpa Terminal (aktif hanya jika SETUP_TOKEN diisi di .env)
+Route::get('/setup/{token}', SetupController::class)->middleware('throttle:5,1')->name('setup');
 
 /* ===================== PANEL ADMIN ===================== */
 
